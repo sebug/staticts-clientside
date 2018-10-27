@@ -6,10 +6,10 @@
   "repository": "https://github.com/sebug/staticts-clientside.git",
   "author": "sebug <sebastian.gfeller@gmail.com>",
   "license": "Apache-2.0",
-    "private": false,
-    "scripts": {
-	"build": "webpack"
-    },
+  "private": false,
+  "scripts": {
+    "build": "webpack && cp node_modules/babel-polyfill/dist/polyfill.min.js dist/"
+  },
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
@@ -18,5 +18,8 @@
     "html-webpack-plugin": "^3.2.0",
     "webpack": "^4.23.1",
     "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0"
   }
 }
