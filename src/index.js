@@ -1,1 +1,1 @@
-console.log('Hello after webpack');
+console.log('Hello after webpack, modified');
