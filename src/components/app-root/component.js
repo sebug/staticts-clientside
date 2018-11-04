@@ -6,6 +6,12 @@ ko.components.register('upload-timesheet', uploadTimesheet);
 
 class ViewModel {
     constructor(params) {
+	this.uploadLinesCode = ko.observable();
+	if (document && document.location) {
+	    let sps = (new URL(document.location)).searchParams;
+	    let uploadLinesCode = sps.get('uploadLinesCode');
+	    this.uploadLinesCode(uploadLinesCode);
+	}
     }
 }
 

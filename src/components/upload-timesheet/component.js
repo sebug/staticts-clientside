@@ -3,7 +3,11 @@ import htmlContent from './component.html';
 
 class ViewModel {
     constructor(params) {
-	
+	this.takeFile = this.takeFile.bind(this);
+    }
+
+    takeFile(file) {
+	console.log('taking file');
     }
 }
 
