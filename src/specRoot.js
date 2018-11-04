@@ -1,7 +1,5 @@
-import appRoot from './components/app-root/component.js';
+import appRootSpec from './components/app-root/componentSpec.js';
+import uploadTimesheetComponentSpec from './components/upload-timesheet/componentSpec.js';
 
-describe('the app root component', function () {
-    it('is an object', function () {
-	expect(appRoot).toEqual(jasmine.any(Object));
-    });
-});
+appRootSpec();
+uploadTimesheetComponentSpec();
