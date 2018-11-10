@@ -11,10 +11,12 @@ function readText(file) {
 	    reject(fr.error);
 	};
 	fr.readAsText(file);
+	console.log('started read');
     });
 }
 
 async function readLines(file) {
+    console.log('starting read lines');
     const txt = await readText(file);
     const parser = new DOMParser();
     const xmlDoc = parser.parseFromString(txt, "text/xml");
