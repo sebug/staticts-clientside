@@ -11,7 +11,6 @@ function readText(file) {
 	    reject(fr.error);
 	};
 	fr.readAsText(file);
-	console.log('started read');
     });
 }
 
@@ -26,15 +25,30 @@ function getTimesheetEntryWorksheet(timesheetEntryWorkSheet) {
     }
 }
 
+function readRow(row) {
+    return row;
+}
+
+function* readRows(rows) {
+    // skip first two rows
+    for (let i = 2; i < rows.length; i += 1) {
+	yield readRow(rows[i]);
+    }
+}
+
 async function readLines(file) {
-    console.log('starting read lines');
     const txt = await readText(file);
     const parser = new DOMParser();
     const xmlDoc = parser.parseFromString(txt, "text/xml");
     const worksheets = xmlDoc.getElementsByTagName('Worksheet');
     const timesheetEntryWorksheet = getTimesheetEntryWorksheet(worksheets);
+    if (!timesheetEntryWorksheet) {
+	throw new Error("Could not find timesheet entry worksheet");
+    }
+    const rows = timesheetEntryWorksheet.getElementsByTagName('Row');
+    const lines = readRows(rows);
 
-    console.log(timesheetEntryWorksheet);
+    console.log(lines);
 
     return xmlDoc;
 }
