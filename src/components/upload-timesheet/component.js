@@ -91,11 +91,14 @@ class ViewModel {
 	}
 	this.takeFile = this.takeFile.bind(this);
 	this.upload = this.upload.bind(this);
+	this.mostRecentLines = ko.observableArray([]);
     }
 
     takeFile(file) {
 	readLines(file).then(lines => {
-	    console.log(lines);
+	    let mostRecent = lines.slice(lines.length - 10);
+	    mostRecent.reverse();
+	    console.log(mostRecent);
 	});
     }
 
