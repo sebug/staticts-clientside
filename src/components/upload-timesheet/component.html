@@ -4,6 +4,8 @@
       <h2>TS Upload</h2>
     </legend>
     <p>Upload file: <input type="file" name="tsup" data-bind="event: { change: function() { takeFile($element.files[0]); } }" /></p>
+    <!-- ko if: canUpload -->
     <p><button type="submit" name="upload-ts">Upload</button></p>
+    <!-- /ko -->
   </fieldset>
 </form>
