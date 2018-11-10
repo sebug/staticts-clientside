@@ -1,6 +1,12 @@
 import ko from 'knockout';
 import htmlContent from './component.html';
 
+function readLines(file) {
+    return new Promise(function (resolve, reject) {
+	resolve([]);
+    });
+}
+
 class ViewModel {
     constructor(params) {
 	this.uploadLinesCode = params.uploadLinesCode;
@@ -13,6 +19,9 @@ class ViewModel {
 
     takeFile(file) {
 	console.log(file);
+	readLines(file).then(lines => {
+	    console.log(lines);
+	});
     }
 
     upload() {
