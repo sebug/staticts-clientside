@@ -21,6 +21,10 @@ const runTests = () => {
 	    it('has an uploadLinesCode', function () {
 		expect(instance.uploadLinesCode()).toEqual(jasmine.any(String));
 	    });
+
+	    it('has an upload function', function () {
+		expect(instance.upload).toEqual(jasmine.any(Function));
+	    });
 	});
     });
 };

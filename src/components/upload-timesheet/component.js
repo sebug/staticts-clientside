@@ -8,11 +8,17 @@ class ViewModel {
 	    this.uploadLinesCode = ko.observable(this.uploadLinesCode);
 	}
 	this.takeFile = this.takeFile.bind(this);
+	this.upload = this.upload.bind(this);
     }
 
     takeFile(file) {
 	console.log('taking file');
 	console.log(this.uploadLinesCode());
+    }
+
+    upload() {
+	console.log('uploading');
+	return false;
     }
 }
 
