@@ -15,18 +15,27 @@ function readText(file) {
     });
 }
 
+function getTimesheetEntryWorksheet(timesheetEntryWorkSheet) {
+    for (let i = 0; i < timesheetEntryWorkSheet.length; i += 1) {
+	const ws = timesheetEntryWorkSheet[i];
+	const title = ws.attributes["ss:Name"];
+	if (title && title.value &&
+	    title.value.indexOf('Timesheet Entry') >= 0) {
+	    return ws;
+	}
+    }
+}
+
 async function readLines(file) {
     console.log('starting read lines');
     const txt = await readText(file);
     const parser = new DOMParser();
     const xmlDoc = parser.parseFromString(txt, "text/xml");
-    const timesheetEntryWorkSheet = xmlDoc.getElementsByTagName('Worksheet');
+    const worksheets = xmlDoc.getElementsByTagName('Worksheet');
+    const timesheetEntryWorksheet = getTimesheetEntryWorksheet(worksheets);
 
-    for (let i = 0; i < timesheetEntryWorkSheet.length; i += 1) {
-	const ws = timesheetEntryWorkSheet[i];
-	const title = ws.attributes["ss:Name"];
-	console.log(title);
-    }
+    console.log(timesheetEntryWorksheet);
+
     return xmlDoc;
 }
 
