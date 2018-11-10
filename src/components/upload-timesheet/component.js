@@ -12,8 +12,7 @@ class ViewModel {
     }
 
     takeFile(file) {
-	console.log('taking file');
-	console.log(this.uploadLinesCode());
+	console.log(file);
     }
 
     upload() {
