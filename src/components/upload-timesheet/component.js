@@ -1,7 +1,7 @@
 import ko from 'knockout';
 import htmlContent from './component.html';
 
-function readLines(file) {
+function readText(file) {
     return new Promise(function (resolve, reject) {
 	const fr = new FileReader();
 	fr.onloadended = () => {
@@ -13,6 +13,15 @@ function readLines(file) {
 	fr.readAsText(file);
     });
 }
+
+async function readLines(file) {
+    const txt = await readText(file);
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(txt, "text/xml");
+    return xmlDoc;
+}
+
+
 
 class ViewModel {
     constructor(params) {
