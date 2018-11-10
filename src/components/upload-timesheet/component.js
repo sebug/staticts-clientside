@@ -3,7 +3,14 @@ import htmlContent from './component.html';
 
 function readLines(file) {
     return new Promise(function (resolve, reject) {
-	resolve([]);
+	const fr = new FileReader();
+	fr.onloadended = () => {
+	    resolve(fr.result);
+	};
+	fr.onerror = () => {
+	    reject(fr.error);
+	};
+	fr.readAsText(file);
     });
 }
 
