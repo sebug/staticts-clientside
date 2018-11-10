@@ -123,7 +123,7 @@ class ViewModel {
     }
 
     upload() {
-	uploadLines(this.allLines()).then(() => {
+	this.uploadLines(this.allLines()).then(() => {
 	    console.log('uploaded lines');
 	});
 	console.log('uploading');
