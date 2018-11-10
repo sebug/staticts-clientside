@@ -91,6 +91,7 @@ class ViewModel {
 	}
 	this.takeFile = this.takeFile.bind(this);
 	this.upload = this.upload.bind(this);
+	this.uploadLines = this.uploadLines.bind(this);
 	this.mostRecentLines = ko.observableArray([]);
 	this.allLines = ko.observableArray([]);
 	this.canUpload = ko.pureComputed(() => {
@@ -107,7 +108,24 @@ class ViewModel {
 	});
     }
 
+    async uploadLines(lines) {
+	const uploadResult = await fetch('/api/UploadLinesTrigger?code=' +
+					 this.uploadLinesCode(),
+					 {
+					     method: 'POST',
+					     credentials: 'same-origin',
+					     headers: {
+						 "Content-Type": "application/json; charset=utf-8",
+					     },
+					     body: JSON.stringify(lines)
+					 });
+	return true;
+    }
+
     upload() {
+	uploadLines(this.allLines()).then(() => {
+	    console.log('uploaded lines');
+	});
 	console.log('uploading');
 	return false;
     }
