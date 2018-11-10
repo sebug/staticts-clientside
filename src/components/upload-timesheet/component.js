@@ -48,8 +48,15 @@ async function readLines(file) {
     const rows = timesheetEntryWorksheet.getElementsByTagName('Row');
     const lines = readRows(rows);
 
-    console.log(lines);
-
+    let i = 0;
+    for (const line of lines) {
+	if (i > 10) {
+	    break;
+	}
+	console.log(line);
+	i += 1;
+    }
+    
     return xmlDoc;
 }
 
