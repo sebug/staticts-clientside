@@ -41,7 +41,22 @@ function cellsAsArray(cells) {
 function readRow(row) {
     const cells = cellsAsArray(row.getElementsByTagName('Cell'));
     
-    return cells;
+    return {
+	lineNumber: cells[0],
+	startDate: cells[1],
+	endDate: cells[2],
+	jobNumber: cells[3],
+	jobName: cells[4],
+	clientNumber: cells[5],
+	clientName: cells[6],
+	taskNumber: cells[7],
+	taskDescription: cells[8],
+	siteCode: cells[9],
+	workTypeCode: cells[10],
+	workTypeDescription: cells[11],
+	quantityWorked: cells[12],
+	invoiceQuantity: cells[13]
+    };
 }
 
 function* readRows(rows) {
@@ -88,7 +103,6 @@ class ViewModel {
     }
 
     takeFile(file) {
-	console.log(file);
 	readLines(file).then(lines => {
 	    console.log(lines);
 	});
