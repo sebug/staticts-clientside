@@ -9,11 +9,17 @@ const runTests = () => {
 	describe('its view model instantiated', function () {
 	    let instance;
 	    beforeEach(function () {
-		instance = new uploadTimesheetComponent.viewModel({});
+		instance = new uploadTimesheetComponent.viewModel({
+		    uploadLinesCode: 'ABC'
+		});
 	    });
 
 	    it('has a takeFile function', function () {
 		expect(instance.takeFile).toEqual(jasmine.any(Function));
+	    });
+
+	    it('has an uploadLinesCode', function () {
+		expect(instance.uploadLinesCode()).toEqual(jasmine.any(String));
 	    });
 	});
     });
