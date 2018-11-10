@@ -28,11 +28,11 @@ function getTimesheetEntryWorksheet(timesheetEntryWorkSheet) {
 function cellsAsArray(cells) {
     let result = [];
     for (let i = 0; i < cells.length; i += 1) {
-	const data = cells[i].getElementByTagName('Data');
-	if (!data) {
+	const data = cells[i].getElementsByTagName('Data');
+	if (!data.length) {
 	    result.push('');
 	} else {
-	    result.push(data.textContent);
+	    result.push(data[0].textContent);
 	}
     }
     return result;
