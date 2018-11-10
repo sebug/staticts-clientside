@@ -20,6 +20,13 @@ async function readLines(file) {
     const txt = await readText(file);
     const parser = new DOMParser();
     const xmlDoc = parser.parseFromString(txt, "text/xml");
+    const timesheetEntryWorkSheet = xmlDoc.getElementsByTagName('Worksheet');
+
+    for (let i = 0; i < timesheetEntryWorkSheet.length; i += 1) {
+	const ws = timesheetEntryWorkSheet[i];
+	const title = ws.attributes["ss:Name"];
+	console.log(title);
+    }
     return xmlDoc;
 }
 
