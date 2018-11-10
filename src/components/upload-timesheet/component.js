@@ -94,7 +94,7 @@ class ViewModel {
 	this.mostRecentLines = ko.observableArray([]);
 	this.allLines = ko.observableArray([]);
 	this.canUpload = ko.pureComputed(() => {
-	    this.allLines() && this.allLines().length;
+	    return this.allLines() && this.allLines().length;
 	});
     }
 
@@ -103,7 +103,7 @@ class ViewModel {
 	    this.allLines(lines);
 	    let mostRecent = lines.slice(lines.length - 10);
 	    mostRecent.reverse();
-	    console.log(mostRecent);
+	    this.mostRecentLines(mostRecent);
 	});
     }
 

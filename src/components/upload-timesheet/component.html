@@ -9,3 +9,27 @@
     <!-- /ko -->
   </fieldset>
 </form>
+
+<!-- ko if: mostRecentLines() && mostRecentLines().length -->
+<h3>Most recent lines</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Start Date</th>
+      <th>Job Name</th>
+      <th>Task Description</th>
+      <th>Hours worked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- ko foreach: mostRecentLines -->
+    <tr>
+      <td><span data-bind="text: startDate"></span></td>
+      <td><span data-bind="text: jobName"></span></td>
+      <td><span data-bind="text: taskDescription"></span></td>
+      <td><span data-bind="text: quantityWorked"></span></td>
+    </tr>
+    <!-- /ko -->
+  </tbody>
+</table>
+<!-- /ko -->
