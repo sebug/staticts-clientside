@@ -25,8 +25,23 @@ function getTimesheetEntryWorksheet(timesheetEntryWorkSheet) {
     }
 }
 
+function cellsAsArray(cells) {
+    let result = [];
+    for (let i = 0; i < cells.length; i += 1) {
+	const data = cells[i].getElementByTagName('Data');
+	if (!data) {
+	    result.push('');
+	} else {
+	    result.push(data.textContent);
+	}
+    }
+    return result;
+}
+
 function readRow(row) {
-    return row;
+    const cells = cellsAsArray(row.getElementsByTagName('Cell'));
+    
+    return cells;
 }
 
 function* readRows(rows) {
