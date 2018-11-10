@@ -4,8 +4,8 @@ import htmlContent from './component.html';
 function readText(file) {
     return new Promise(function (resolve, reject) {
 	const fr = new FileReader();
-	fr.onloadended = () => {
-	    resolve(fr.result);
+	fr.onload = e => {
+	    resolve(e.target.result);
 	};
 	fr.onerror = () => {
 	    reject(fr.error);
