@@ -27,6 +27,23 @@ class ViewModel {
 		line.Project = line.Project || '';
 		line.Task = line.Task || '';
 		line.TimeSpent = line.TimeSpent || {};
+
+		if (line.BaseLine) {
+		    line.BaseLine = Math.round(line.BaseLine * 100) / 100;
+		}
+		if (line.TotalTimeSpent) {
+		    line.TotalTimeSpent = Math.round(line.TotalTimeSpent * 100) / 100;
+		}
+		if (line.RemainingWork) {
+		    line.RemainingWork = Math.round(line.RemainingWork * 100) / 100;
+		}
+		if (line.Variance) {
+		    line.Variance = Math.round(line.Variance * 100) / 100;
+		}
+
+		Object.keys(line.TimeSpent).forEach(k => {
+		    line.TimeSpent[k] = Math.round(line.TimeSpent[k] * 100) / 100;
+		});
 	    }
 	}
 	this.followUp(followUp);
