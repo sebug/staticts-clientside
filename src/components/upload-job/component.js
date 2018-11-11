@@ -24,6 +24,7 @@ class ViewModel {
     constructor(params) {
 	this.takeFile = this.takeFile.bind(this);
         this.upload = this.upload.bind(this);
+	this.canUpload = ko.observable(true);
     }
 
     takeFile(file) {
