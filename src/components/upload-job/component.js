@@ -16,8 +16,10 @@ function readAsArrayBuffer(file) {
 }
 
 async function readJob(file) {
-    const ab = readAsArrayBuffer(file);
-    return ab;
+    const ab = await readAsArrayBuffer(file);
+    const data = new Uint8Array(ab);
+    const workbook = XLSX.read(data, {type:"array"});
+    return workbook;
 }
 
 class ViewModel {
