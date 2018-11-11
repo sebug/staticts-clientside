@@ -9,6 +9,7 @@ ko.components.register('upload-job', uploadJob);
 class ViewModel {
     constructor(params) {
 	this.uploadLinesCode = ko.observable();
+	this.uploadTasksCode = ko.observable();
 	if (document && document.location) {
 	    let sps = (new URL(document.location)).searchParams;
 	    let uploadLinesCode = sps.get('uploadLinesCode');
