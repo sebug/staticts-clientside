@@ -24,7 +24,7 @@ async function readJob(file) {
 
 class ViewModel {
     constructor(params) {
-	this.takeFile = this.takeFile.bind(this);
+	this.takeJob = this.takeJob.bind(this);
         this.upload = this.upload.bind(this);
 	this.canUpload = ko.observable(true);
     }
