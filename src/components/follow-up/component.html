@@ -1,7 +1,7 @@
 <!-- ko with: followUp -->
         <h1 data-bind="html: (Name || '') + ' &mdash; ' + (TimePeriodTitle || '')"></h1>
 
-<!-- ko if: followUpLines -->
+<!-- ko if: FollowUpLines -->
 
 <table class="table">
   <thead>
@@ -16,9 +16,9 @@
       <th scope="col" rowspan="2">Remaining Work</th>
       <th scope="col" rowspan="2">Total Work</th>
       <th scope="col" rowspan="2">Variance</th>
-      <!-- ko if: dateBuckets -->
+      <!-- ko if: DateBuckets -->
 
-      <th scope="col" data-bind="attr: { colspan: bucketCount }">Spent (days)</th>
+      <th scope="col" data-bind="attr: { colspan: DateBuckets.length }">Spent (days)</th>
 
       <!-- /ko -->
     </tr>
@@ -32,7 +32,7 @@
   </thead>
   <tbody>
 
-    <!-- ko foreach: followUpLines -->
+    <!-- ko foreach: FollowUpLines -->
 
     <tr>
       <td data-bind="text: State"></td>
