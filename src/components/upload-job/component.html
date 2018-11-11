@@ -13,5 +13,24 @@
 <!-- ko if: jobNumber -->
 <section>
   <h2>Job <span data-bind="text: jobNumber"></span></h2>
+
+  <!-- ko if: taskLines -->
+  <table>
+    <thead>
+      <tr>
+	<th>Task Number</th>
+	<th>Task Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- ko foreach: taskLines -->
+      <tr>
+	<td><span data-bind="text: taskNumber"></span></td>
+	<td><span data-bind="text: taskDescription"></span></td>
+      </tr>
+      <!-- /ko -->
+    </tbody>
+  </table>
+  <!-- /ko -->
 </section>
 <!-- /ko -->

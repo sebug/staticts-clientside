@@ -24,8 +24,8 @@ function readTaskLines(sheet) {
 	const taskNumber = sheet['A' + i].v;
 	const taskDescription = sheet['B' + i] && sheet['B' + i].v;
 	result.push({
-	    taskNumber: taskNumber,
-	    taskDescription: taskDescription
+	    taskNumber: taskNumber || '',
+	    taskDescription: taskDescription || ''
 	});
     }
 
@@ -46,8 +46,9 @@ class ViewModel {
 	this.takeJob = this.takeJob.bind(this);
         this.upload = this.upload.bind(this);
 	this.jobNumber = ko.observable();
+	this.taskLines = ko.observableArray([]);
 	this.canUpload = ko.pureComputed(() => {
-	    return this.jobNumber();
+	    return this.jobNumber() && this.taskLines().length;
 	});
     }
 
@@ -56,8 +57,8 @@ class ViewModel {
 	const jobNumber = name.replace('.xlsx', '').replace('JOB','')
 	    .replace(/^0+/,'');
 	this.jobNumber(jobNumber);
-	readJob(file).then(job => {
-	    console.log(job);
+	readJob(file).then(taskLines => {
+	    this.taskLines(taskLines);
 	});
     }
 
