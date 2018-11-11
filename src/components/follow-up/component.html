@@ -1,1 +1,72 @@
-<h1>Follow-up</h1>
+<!-- ko with: followUp -->
+        <h1 data-bind="html: (Name || '') + ' &mdash; ' + (TimePeriodTitle || '')"></h1>
+
+<!-- ko if: followUpLines -->
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col" rowspan="2">State</th>
+      <th scope="col" rowspan="2">Nav Job #</th>
+      <th scope="col" rowspan="2">Nav Task #</th>
+      <th scope="col" rowspan="2">TFS #</th>
+      <th scope="col" rowspan="2">Project</th>
+      <th scope="col" rowspan="2">Task</th>
+      <th scope="col" rowspan="2">Baseline (days)</th>
+      <th scope="col" rowspan="2">Remaining Work</th>
+      <th scope="col" rowspan="2">Total Work</th>
+      <th scope="col" rowspan="2">Variance</th>
+      <!-- ko if: dateBuckets -->
+
+      <th scope="col" data-bind="attr: { colspan: bucketCount }">Spent (days)</th>
+
+      <!-- /ko -->
+    </tr>
+    <tr>
+      <!-- ko if: DateBuckets -->
+      <!-- ko foreach: DateBuckets -->
+      <th scope="col" data-bind="text: $data"></th>
+      <!-- /ko -->
+      <!-- /ko -->
+    </tr>
+  </thead>
+  <tbody>
+
+    <!-- ko foreach: followUpLines -->
+
+    <tr>
+      <td data-bind="text: State"></td>
+      <td data-bind="text: NavJobNumber"></td>
+      <td data-bind="text: NavTaskNumber"></td>
+      <td data-bind="text: TfsNumber"></td>
+      <td data-bind="text: Project"></td>
+      <td data-bind="text: Task"></td>
+      <td data-bind="text: BaseLine"></td>
+      <td data-bind="text: RemainingWork"></td>
+      <td data-bind="text: TotalTimeSpent"></td>
+      <td data-bind="text: Variance"></td>
+
+      <!-- ko if: $parent.DateBuckets -->
+      <!-- ko foreach: $parent.DateBuckets -->
+      
+      <!-- ko if: $parent.TimeSpent[$data] -->
+      <td data-bind="text: $parent.TimeSpent[$data]"></td>
+      <!-- /ko -->
+
+      <!-- ko ifnot: $parent.TimeSpent[$data] -->
+      <td></td>
+      <!-- /ko -->
+
+      <!-- /ko -->
+      <!-- /ko -->
+    </tr>
+
+    <!-- /ko -->
+
+  </tbody>
+</table>
+
+<!-- /ko -->
+
+<!-- /ko -->
+
