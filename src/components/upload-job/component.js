@@ -70,7 +70,8 @@ class ViewModel {
 
     async uploadTasks(tasks) {
 	const uploadResult = await fetch('/api/UploadTasksTrigger?code=' +
-					 this.uploadTasksCode(),
+					 this.uploadTasksCode() +
+					 '&jobNumber=' + this.jobNumber(),
 					 {
 					     method: 'POST',
 					     credentials: 'same-origin',
