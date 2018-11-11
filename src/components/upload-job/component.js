@@ -45,10 +45,17 @@ class ViewModel {
     constructor(params) {
 	this.takeJob = this.takeJob.bind(this);
         this.upload = this.upload.bind(this);
-	this.canUpload = ko.observable(true);
+	this.jobNumber = ko.observable();
+	this.canUpload = ko.pureComputed(() => {
+	    return this.jobNumber();
+	});
     }
 
     takeJob(file) {
+	const name = file.name || '';
+	const jobNumber = name.replace('.xlsx', '').replace('JOB','')
+	    .replace(/^0+/,'');
+	this.jobNumber(jobNumber);
 	readJob(file).then(job => {
 	    console.log(job);
 	});
