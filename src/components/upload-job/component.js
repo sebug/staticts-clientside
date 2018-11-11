@@ -27,7 +27,7 @@ class ViewModel {
 	this.canUpload = ko.observable(true);
     }
 
-    takeFile(file) {
+    takeJob(file) {
 	console.log(file);
 	readJob(file).then(job => {
 	    console.log(job);
