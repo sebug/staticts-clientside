@@ -1,0 +1,11 @@
+<form data-bind="submit: upload">
+  <fieldset>
+    <legend>
+      <h2>Job Upload</h2>
+    </legend>
+    <p>Upload file: <input type="file" name="jobup" data-bind="event: { change: function() { takeJob($element.files[0]); } }" /></p>
+    <!-- ko if: canUpload -->
+    <p><button type="submit" name="upload-job">Upload</button></p>
+    <!-- /ko -->
+  </fieldset>
+</form>
