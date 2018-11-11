@@ -26,6 +26,7 @@ class ViewModel {
                 line.Variance = line.TotalTimeSpent + line.RemainingWork - (line.BaseLine || 0);
 		line.Project = line.Project || '';
 		line.Task = line.Task || '';
+		line.DateBuckets = line.DateBuckets || {};
 	    }
 	}
 	this.followUp(followUp);
