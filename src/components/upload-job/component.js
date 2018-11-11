@@ -49,7 +49,6 @@ class ViewModel {
     }
 
     takeJob(file) {
-	console.log(file);
 	readJob(file).then(job => {
 	    console.log(job);
 	});
