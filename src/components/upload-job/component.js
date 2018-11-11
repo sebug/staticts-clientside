@@ -43,6 +43,11 @@ async function readJob(file) {
 
 class ViewModel {
     constructor(params) {
+	this.uploadTasksCode = params.uploadTasksCode;
+	if (typeof this.uploadTasksCode !== 'function') {
+	    this.uploadTasksCode = ko.observable(this.uploadTasksCode);
+	}
+	console.log(this.uploadTasksCode());
 	this.takeJob = this.takeJob.bind(this);
         this.upload = this.upload.bind(this);
 	this.jobNumber = ko.observable();

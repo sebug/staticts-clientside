@@ -13,6 +13,8 @@ class ViewModel {
 	    let sps = (new URL(document.location)).searchParams;
 	    let uploadLinesCode = sps.get('uploadLinesCode');
 	    this.uploadLinesCode(uploadLinesCode);
+	    const uploadTasksCode = sps.get('uploadTasksCode');
+	    this.uploadTasksCode(uploadTasksCode);
 	}
     }
 }
