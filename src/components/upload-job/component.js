@@ -20,7 +20,7 @@ function readTaskLines(sheet) {
 	return [];
     }
     let result = [];
-    for (let i = 0; sheet['A' + i] && sheet['A' + i].v; i += 1) {
+    for (let i = 4; sheet['A' + i] && sheet['A' + i].v; i += 1) {
 	const taskNumber = sheet['A' + i].v;
 	const taskDescription = sheet['B' + i] && sheet['B' + i].v;
 	result.push({
