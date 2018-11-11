@@ -15,11 +15,29 @@ function readAsArrayBuffer(file) {
     });
 }
 
+function readTaskLines(sheet) {
+    if (!sheet) {
+	return [];
+    }
+    let result = [];
+    for (let i = 0; sheet['A' + i] && sheet['A' + i].v; i += 1) {
+	const taskNumber = sheet['A' + i].v;
+	const taskDescription = sheet['B' + i] && sheet['B' + i].v;
+	result.push({
+	    taskNumber: taskNumber,
+	    taskDescription: taskDescription
+	});
+    }
+
+    return result;
+}
+
 async function readJob(file) {
     const ab = await readAsArrayBuffer(file);
     const data = new Uint8Array(ab);
     const workbook = XLSX.read(data, {type:"array"});
-    return workbook;
+    const taskLines = readTaskLines(workbook.Sheets.Sheet1);
+    return taskLines;
 }
 
 class ViewModel {
