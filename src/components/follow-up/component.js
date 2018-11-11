@@ -20,6 +20,8 @@ class ViewModel {
 	const followUp = await followUpResult.json();
 	if (followUp && followUp.FollowUpLines) {
 	    for (let line of followUp.FollowUpLines) {
+		line.TotalTimeSpent = line.TotalTimeSpent || 0;
+
 		line.RemainingWork = Math.max(0, ((line.BaseLine || 0) - line.TotalTimeSpent));
                 line.Variance = line.TotalTimeSpent + line.RemainingWork - (line.BaseLine || 0);
 		line.Project = line.Project || '';
