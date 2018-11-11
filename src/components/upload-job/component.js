@@ -49,6 +49,7 @@ class ViewModel {
 	}
 	console.log(this.uploadTasksCode());
 	this.takeJob = this.takeJob.bind(this);
+	this.uploadTasks = this.uploadTasks.bind(this);
         this.upload = this.upload.bind(this);
 	this.jobNumber = ko.observable();
 	this.taskLines = ko.observableArray([]);
@@ -67,7 +68,26 @@ class ViewModel {
 	});
     }
 
+    async uploadTasks(tasks) {
+	const uploadResult = await fetch('/api/UploadTasksTrigger?code=' +
+					 this.uploadTasksCode(),
+					 {
+					     method: 'POST',
+					     credentials: 'same-origin',
+					     headers: {
+						 "Content-Type": "application/json; charset=utf-8",
+					     },
+					     body: JSON.stringify(tasks)
+					 });
+	return true;
+    }
+
     upload() {
+	this.uploadTasks(this.taskLines()).then(() => {
+	    console.log('uploaded tasks');
+	});
+	console.log('uploading');
+	return false;
     }
 }
 
