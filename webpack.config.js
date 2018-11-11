@@ -24,6 +24,31 @@ let mainConfig = {
     ]
 };
 
+const followUpConfig = {
+    mode: 'production',
+    entry: path.join(__dirname, '/src/followup.js'),
+    output: {
+        filename: 'followup.js',
+        path: path.join(__dirname, '/dist')},
+    module:{
+        rules:[{
+           test: /\.js$/,
+           exclude: /node_modules/,
+           loader: 'babel-loader'
+        }, {
+	    test: /\.html$/, use: [ 'html-loader' ]
+	}]
+    },
+    plugins:[
+        new HWP(
+            {
+		template: path.join(__dirname,'/src/followup.html'),
+		filename: 'followup.html'
+	    }
+        )
+    ]
+};
+
 const testConfig = {
     mode: 'production',
     entry: path.join(__dirname, '/src/specRoot.js'),
@@ -44,4 +69,4 @@ const testConfig = {
     ]
 };
 
-module.exports = [ mainConfig, testConfig ];
+module.exports = [ mainConfig, followUpConfig, testConfig ];
