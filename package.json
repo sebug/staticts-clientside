@@ -8,8 +8,8 @@
   "license": "Apache-2.0",
   "private": false,
   "scripts": {
-      "build": "webpack && cp node_modules/babel-polyfill/dist/polyfill.min.js dist/",
-      "test": "jasmine"
+    "build": "webpack && cp node_modules/babel-polyfill/dist/polyfill.min.js dist/",
+    "test": "jasmine"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "knockout": "^3.4.2"
+    "knockout": "^3.4.2",
+    "xlsx": "^0.14.0"
   }
 }
