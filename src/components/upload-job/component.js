@@ -36,6 +36,7 @@ async function readJob(file) {
     const ab = await readAsArrayBuffer(file);
     const data = new Uint8Array(ab);
     const workbook = XLSX.read(data, {type:"array"});
+    console.log(workbook.Sheets);
     const taskLines = readTaskLines(workbook.Sheets.Sheet1);
     return taskLines;
 }
