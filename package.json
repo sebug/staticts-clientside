@@ -25,6 +25,6 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "knockout": "^3.5.0",
-    "xlsx": "^0.14.0"
+    "xlsx": "^0.17.0"
   }
 }
